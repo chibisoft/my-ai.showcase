@@ -5,7 +5,7 @@
         <div id="slider" layout:fragment="slider">
             <div id="one" class="contentslider">
                 <div class="cs_wrapper">
-                    <div class="cs_slider">
+                    <div class="cs_slider" th:with="rootUrl=@{/}">
 
                         <div class="cs_article">
                             <div class="slider_image_wrapper">
@@ -25,16 +25,16 @@
                         </div>
 
 
-                        <div class="cs_article">
+                        <div class="cs_article" th:with="lifeUrl=@{/life}">
                             <div class="slider_image_wrapper"><span></span>
-                                <a th:href="${application.lifeUrl}">
+                                <a th:href="${lifeUrl}">
                                     <img th:src="@{/static/images/slide-life.png}" alt="My-Ai Life"/>
                                     <span></span>
                                 </a>
                             </div>
 
                             <div class="cs_article_des">
-                                <a th:href="${application.lifeUrl}"><h2>My-Ai <em>Life</em></h2></a>
+                                <a th:href="${lifeUrl}"><h2>My-Ai <em>Life</em></h2></a>
 
                                 <p>What's the point of bringing your Characters to life if you don't give them somewhere
                                     to
