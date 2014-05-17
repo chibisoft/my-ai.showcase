@@ -6,7 +6,7 @@
 
     <groupId>net.chibisoft</groupId>
     <artifactId>my-ai.web.showcase</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <description>Showcase web for My-Ai.net. Also serves as a good template for a simple Static Web delivered with
         Spring backing.
     </description>
