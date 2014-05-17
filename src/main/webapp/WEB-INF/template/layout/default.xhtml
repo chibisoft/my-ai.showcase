@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head layout:replace="fragment/head :: head"/>
+
+    <body>
+        <div id="wrapper">
+            <div layout:replace="fragment/banner :: banner"/>
+            <nav layout:replace="fragment/menu :: menu"/>
+
+            <div layout:fragment="content"/>
+
+            <div layout:replace="fragment/footer :: footer"/>
+        </div>
+    </body>
+
+</html>

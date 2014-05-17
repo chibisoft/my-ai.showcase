@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="layout/default">
+    <nav id="menu" layout:fragment="menu">
+        <ul>
+            <li><a th:href="@{/}">My-Ai.net</a></li>
+            <li><a th:href="@{/life}">My-Ai Life</a></li>
+            <li><a th:href="${application.forumUrl}">Forum</a></li>
+            <li><a th:href="${application.wikiUrl}">Wiki</a></li>
+            <li><a th:href="${application.jiraUrl}">Jira</a></li>
+        </ul>
+    </nav>
+</html>

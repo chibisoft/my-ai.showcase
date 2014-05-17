@@ -14,22 +14,35 @@
     <mvc:resources mapping="/static/**" location="classpath:/META-INF/static/"/>
 
     <!-- VIEW RESOLVERS -->
-    <bean id="tilesViewResolver"
-          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property name="order" value="1"/>
     </bean>
 
-    <!-- TILES CONFIGURATION -->
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>WEB-INF/layouts/layouts.xml</value>
-                <value>WEB-INF/views/**/*-views.xml</value>
-            </list>
+    <!-- TEMPLATE RESOLVER-->
+    <bean id="templateResolver"
+          class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/template/"/>
+        <property name="suffix" value=".xhtml"/>
+        <property name="templateMode" value="HTML5"/>
+
+        <!-- Re-enable caching in production environments, this just allows us to make changes to a template without
+        restarting container -->
+        <property name="cacheable" value="false"/>
+    </bean>
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <property name="additionalDialects">
+            <set>
+                <bean class="nz.net.ultraq.thymeleaf.LayoutDialect"/>
+            </set>
         </property>
     </bean>
 
     <!-- EXPOSE BEANS -->
+    <!-- Exposing some static bean definitions for central configuration and also to test bean use in Thymeleaf -->
     <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
         <property name="attributes">
             <map>
